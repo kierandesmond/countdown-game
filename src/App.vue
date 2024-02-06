@@ -1,18 +1,71 @@
+
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    
+  <v-navigation-drawer app>
+    <!-- -->
+    <h1> Countdown App</h1>
+    <v-list
+          dense
+          rounded
+        >
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+  </v-navigation-drawer>
+
+  <v-app-bar app>
+    <!-- -->
+    
+  </v-app-bar>
+
+  <!-- Sizes your content based upon application components -->
+  <v-main>
+
+    <!-- Provides the application the proper gutter -->
+    <v-container fluid>
+
+      <!-- If using vue-router -->
+      <router-view>  <HomeComponent msg="The Numbers Game"/></router-view>
+    
+    </v-container>
+  </v-main>
+
+  <v-footer app>
+    <!-- -->
+  </v-footer>
+</v-app>
+
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HomeComponent from './components/HomeComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    HomeComponent
+  },
+  data () {
+      return {
+        items: [
+          { title: 'Home', icon: 'mdi-view-dashboard' },
+          { title: 'About', icon: 'mdi-forum' },
+        ],
+      }
+    },
 }
 </script>
 
