@@ -6,7 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "docker:dev": "docker run -it -v ${PWD} -p 8080:8080 countdown-app"
+    "docker:dev": "docker run -it -v ${PWD} -p 8080:8080 countdown-app",
+    "docker:build": "docker build -t countdown-app:latest .",
+    "docker:tag" : "docker tag countdown-app:latest 445213826038.dkr.ecr.eu-west-1.amazonaws.com/countdown-app:latest",
+    "docker:push" : "docker push 445213826038.dkr.ecr.eu-west-1.amazonaws.com/countdown-app:latest"
   },
   "dependencies": {
     "core-js": "^3.8.3",
