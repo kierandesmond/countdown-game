@@ -3,6 +3,8 @@ import App from './App.vue'
 import vuetify from '@/plugins/vuetify' // Ensure this export is correctly set up
 import VueRouter from 'vue-router'
 import HomeComponent from './components/HomeComponent.vue'
+import 'vuetify/dist/vuetify.min.css';
+
 
 // Tell Vue to use VueRouter
 Vue.use(VueRouter)

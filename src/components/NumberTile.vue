@@ -1,12 +1,23 @@
 <template>
   <div class="number-tile">
-    <v-card class="pa-2" outlined tile >
-          
+    <v-card class="pa-2" outlined tile variant="tonal" >
 
-      <div v-if="isTotal"><h3 class="num_class" > {{ isTotal ? 'Target of ' + parseInt(randNum) : '' }} </h3></div>
-      <div v-if="isEven"><h3 class="num_class" > {{ isEven ? parseInt(randEven) : randNum }} </h3></div>
-      <div v-if="!isEven"><h3 class="num_class" > {{ !isEven ? parseInt(randNum) : randEven }} </h3></div>
-
+      <v-card-text>
+        <v-row>
+          <v-col>
+            <div v-if="isTotal"><h3 class="num_class" > {{ isTotal ? 'Target: ' + parseInt(randNum) : '' }} </h3></div>
+            <div v-if="isEven & !isTotal"><h3 class="num_class" > {{ isEven ? parseInt(randEven) : randNum }} </h3></div>
+            <div v-if="!isEven & !isTotal"><h3 class="num_class" > {{ !isEven ? parseInt(randNum) : randEven }} </h3></div>
+     
+          </v-col>
+        </v-row>
+      </v-card-text>
+     
+      <v-card-actions>
+        <div v-if="isTotal">
+          <v-btn @click="refresh()" color="secondary" text> <v-btn color="secondary" text>Next</v-btn></v-btn></div>
+       
+      </v-card-actions>
          
           </v-card>
  
@@ -25,6 +36,8 @@ export default {
     isEven: Boolean
   },
   methods: {
+    refresh() {
+      window.location.reload(); },
     randBetween(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
@@ -71,6 +84,15 @@ a {
 }
 .pa-2 {
   padding: 8px !important;
-  border: 2px solid #242f2a;
+}
+.text-h5 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0px;
+  text-align: center;
+  align-content: center;
+  color: #42b983;
+  margin-bottom: 20px !important;
 }
 </style>
