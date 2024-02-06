@@ -1,4 +1,3 @@
-import { NumberTile } from './NumberTile.vue'
 
 <template>
   <div class="hello">
@@ -6,43 +5,63 @@ import { NumberTile } from './NumberTile.vue'
 
     <v-container
      
-      :key="align"
       class="grey lighten-5 mb-6"
     >
+    <h1>Countdown Numbers Game</h1>
+    
+    <v-row
+       
+        no-gutters
+        style="height: 150px;"
+      >
+      <v-col
+        >
+
+
+        <NumberTile :isTotal="true" :randMin="200" :randMax="1094"/>
+      </v-col>
+
+    </v-row>
+  
+
       <v-row
-        :align="align"
+       
         no-gutters
         style="height: 150px;"
       >
         <v-col
-        
-          :key="n"
         >
-        <NumberTile :randMin="1" :randMax="10"/>
+        <NumberTile :isEven="false" :randMin="1" :randMax="10"/>
       
         </v-col>
         <v-col
        
         >
-        <NumberTile :randMin="11" :randMax="50"/>
+        <NumberTile :isEven="false" :randMin="1" :randMax="20"/>
         </v-col>
         <v-col
      
         >
-        <NumberTile :randMin="1" :randMax="100"/>
+        <NumberTile :isEven="true" :randMin="1" :randMax="20"/>
         </v-col>
         <v-col
       
         >
-        <NumberTile :randMin="1" :randMax="100"/>
+        <NumberTile :isEven="true" :randMin="1" :randMax="50"/>
         </v-col>
         <v-col
         
         >
-        <NumberTile :randMin="1" :randMax="100"/>
+        <NumberTile :isEven="true" :randMin="50" :randMax="100"/>
         </v-col>
 
       </v-row>
+  
+      <br>
+  <h2>How To Play</h2>
+    <p>
+    
+    </p>
     </v-container>
    
    
@@ -50,11 +69,7 @@ import { NumberTile } from './NumberTile.vue'
    
     
    
-  <br>
-  <h2>How To Play</h2>
-    <p>
-    
-    </p>
+ 
    
   </div>
 </template>
@@ -77,7 +92,6 @@ export default {
  
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

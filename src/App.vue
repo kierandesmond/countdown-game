@@ -36,9 +36,10 @@
     <!-- Provides the application the proper gutter -->
     <v-container fluid>
 
+
       <!-- If using vue-router -->
-      <router-view>  <HomeComponent msg="The Numbers Game"/></router-view>
-    
+      <router-view>  </router-view>
+     
     </v-container>
   </v-main>
 
@@ -51,18 +52,18 @@
 
 
 <script>
-import HomeComponent from './components/HomeComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HomeComponent
+    
   },
   data () {
       return {
         items: [
           { title: 'Home', icon: 'mdi-view-dashboard' },
           { title: 'About', icon: 'mdi-forum' },
+          { title: 'Test', icon: 'mdi-forum' },
         ],
       }
     },

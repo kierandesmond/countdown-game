@@ -1,11 +1,13 @@
 <template>
   <div class="number-tile">
-    <v-card
-            class="pa-2"
-            outlined
-            tile
-          >
-          {{ randNum }}
+    <v-card class="pa-2" outlined tile >
+          
+
+      <div v-if="isTotal"><h3 class="num_class" > {{ isTotal ? 'Target of ' + parseInt(randNum) : '' }} </h3></div>
+      <div v-if="isEven"><h3 class="num_class" > {{ isEven ? parseInt(randEven) : randNum }} </h3></div>
+      <div v-if="!isEven"><h3 class="num_class" > {{ !isEven ? parseInt(randNum) : randEven }} </h3></div>
+
+         
           </v-card>
  
   </div>
@@ -18,15 +20,25 @@ export default {
   name: 'TileComponent',
   props: {
     randMin: isInteger,
-    randMax: isInteger
+    randMax: isInteger,
+    isTotal: Boolean,
+    isEven: Boolean
   },
   methods: {
     randBetween(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
+    },
+    getRandEven(min,max) {
+      // return a random number thats either 20, 25, 30, 35, 40, 45, 50, 60, 75, 100
+      // code should only return values between the min and max
+      let numbers = [20, 25, 30, 35, 40, 45, 50, 60, 75, 100];
+      numbers.filter((num) => num >= min && num <= max);
+      return numbers[Math.floor(Math.random() * numbers.length)];
     }
   },
   data() {
     return {
+      randEven: this.getRandEven(this.randMin, this.randMax),
       randNum: this.randBetween(this.randMin, this.randMax)
     }
   },
@@ -37,6 +49,11 @@ export default {
 <style scoped>
 h3 {
   margin: 40px 0 0;
+  color: #42b983;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px !important;
 }
 ul {
   list-style-type: none;
@@ -48,5 +65,12 @@ li {
 }
 a {
   color: #42b983;
+}
+.num_class {
+  color: #42b983;
+}
+.pa-2 {
+  padding: 8px !important;
+  border: 2px solid #242f2a;
 }
 </style>
